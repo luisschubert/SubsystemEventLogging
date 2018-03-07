@@ -24,7 +24,6 @@ FATAL	ID:4
  
 #include <iostream>
 #include <fstream>
-//#include <stdint.h>
 #include <iomanip>
 #include <ctime>
 #include <chrono>
@@ -40,7 +39,6 @@ FATAL	ID:4
 class EventLogger {
     public:
 	EventLogger();
-	//static void *echoLogTestHelper(void *context);
 	static void* echoLogTest(void* param);
 	void error(const char *msg);
 
