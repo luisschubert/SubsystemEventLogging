@@ -1,8 +1,9 @@
 # SubsystemEventLogging
-a client-server program for communicating system-events
+>a client-server program for communicating systemevents to the log
+
+*All programs that monitor subsystems instantiate the EventDispatcher to report information to the system log.*
 
 > one to many relationship between EventLogger and EventDispatcher.
-All programs that monitor subsystems instantiate the EventDispatcher to report information to the system log.
 
 ## EventDispatcher.cpp
 contains EventDispatcher class to be used by subsystems to send messages to the log.
