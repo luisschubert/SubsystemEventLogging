@@ -1,7 +1,7 @@
 // EventDispatcher.cpp
 
 /*
-Class to be incorporated by subsystems to send messages to SubsystemEventLogger
+Class to be incorporated by subsystems to send messages to EventLogger
 */
 
 #include <iostream>
