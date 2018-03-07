@@ -15,9 +15,9 @@ Class to be incorporated by subsystems to send messages to SubsystemEventLogger
 #include <netdb.h>
 #include <arpa/inet.h> 
 
-class LogEventDispatcher{
+class EventDispatcher{
     public:
-	LogEventDispatcher(std::string subsystemIdentifier);
+	EventDispatcher(std::string subsystemIdentifier);
 	int sendDebugMessage(std::string m);
 	int sendInfoMessage(std::string m);
 	int sendWarningMessage(std::string m);
@@ -31,7 +31,7 @@ class LogEventDispatcher{
 };
 
 int main(){
-	LogEventDispatcher log("CAMR1");
+	EventDispatcher log("CAMR1");
 	log.sendInfoMessage("Camera receiving data");
 	std::cin.ignore();
 	log.sendWarningMessage("Camera stopped receiving data");
@@ -41,27 +41,27 @@ int main(){
 	log.sendFatalMessage("Camera temperature below nominal operation levels. SHUTDOWN PROCEDURE INITIATED");
 }
 
-LogEventDispatcher::LogEventDispatcher(std::string subsystemIdentifier){
+EventDispatcher::EventDispatcher(std::string subsystemIdentifier){
 	subsystem = subsystemIdentifier;
 	portno = 9999;
 }
 
-int LogEventDispatcher::sendDebugMessage(std::string message){
+int EventDispatcher::sendDebugMessage(std::string message){
 	return sendMessage("DBG", message);
 }
-int LogEventDispatcher::sendInfoMessage(std::string message){
+int EventDispatcher::sendInfoMessage(std::string message){
 	return sendMessage("INF", message);
 }
-int LogEventDispatcher::sendWarningMessage(std::string message){
+int EventDispatcher::sendWarningMessage(std::string message){
 	return sendMessage("WRN", message);
 }
-int LogEventDispatcher::sendErrorMessage(std::string message){
+int EventDispatcher::sendErrorMessage(std::string message){
 	return sendMessage("ERR", message);
 }
-int LogEventDispatcher::sendFatalMessage(std::string message){
+int EventDispatcher::sendFatalMessage(std::string message){
 	return sendMessage("FTL", message);
 }
-int LogEventDispatcher::sendMessage(std::string messageType, std::string message){
+int EventDispatcher::sendMessage(std::string messageType, std::string message){
     struct sockaddr_in serv_addr;
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0)
